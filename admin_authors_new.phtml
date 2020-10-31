@@ -1,0 +1,39 @@
+<main class="d-flex flex-column">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item">Administration</li>
+      <li class="breadcrumb-item"><a class="text-color" href="admin_authors_index.php">Gestion des auteurs</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Créer un nouveau auteur</li>
+    </ol>
+  </nav>
+  <div class="flex-grow-1 d-md-flex align-items-stretch">
+    <?php include 'admin_menu.phtml'; ?>
+    <form method="post" class="col-md-7 py-4 mx-auto" novalidate>
+      <fieldset>
+        <legend class="text-center display-4 mb-5">Créer un auteur</legend>
+        <div class="form-row align-items-center mb-3">
+          <div class="col-6">
+            <label for="firstname">Prénom de l'auteur</label>
+            <input type="text" 
+                   id="firstname" 
+                   name="firstname" 
+                   class="form-control <?php if (!empty($error['firstname'])): ?> is-invalid <?php endif; ?>"
+                   value="<?= $firstname ?>"
+                   placeholder="Saisir un prénom" 
+                   required />
+          </div>
+          <div class="col-6">
+            <label for="lastname">Prénom de l'auteur</label>
+            <input type="text" 
+                   id="lastname" 
+                   name="lastname" 
+                   class="form-control <?php if (!empty($error['lastname'])): ?> is-invalid <?php endif; ?>"
+                   value="<?= $lastname ?>"
+                   placeholder="Saisir un nom" required />
+          </div>
+        </div>
+        <button type="submit" class="btn bg text-white">Enregistrer</button>
+      </fieldset>
+    </form>
+  </div>
+</main>

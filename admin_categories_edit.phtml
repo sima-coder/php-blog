@@ -1,0 +1,28 @@
+<main class="d-flex flex-column">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item">Administration</li>
+      <li class="breadcrumb-item"><a href="admin_categories_index.php" class="text-color">Gestion des catégories</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Modifier cette catégorie</li>
+    </ol>
+  </nav>
+  <div class="flex-grow-1 d-md-flex align-items-stretch">
+    <?php include 'admin_menu.phtml'; ?>
+    <form method="post" action="admin_categories_edit.php" class="col-md-7 py-4 mx-auto">
+      <input type="hidden" name="id" value ="<?= intval($category['Id']) ?>">
+      <fieldset>
+        <legend class="text-center display-4 mb-5">Mise à jour d'une catégorie</legend>
+        <div class="form-group">
+          <label for="name">Nom de la catégorie</label>
+          <input
+            id="name"
+            name="name"
+            value="<?= htmlspecialchars($category['Name'])?>"
+            type="text"
+            class="form-control">
+        </div>
+        <button type="submit" class="btn bg text-white">Enregistrer</button>
+      </fieldset>
+    </form>
+  </div>
+</main>

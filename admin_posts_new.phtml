@@ -1,0 +1,67 @@
+<main class="d-flex flex-column">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item">Administration</li>
+      <li class="breadcrumb-item"><a class="text-color" href="admin_posts_index.php">Gestion des articles</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Créer un nouvel article</li>
+    </ol>
+  </nav>
+  <div class="flex-grow-1 d-md-flex align-items-stretch">
+    <?php include 'admin_menu.phtml'; ?>
+    <form method="post" class="col-md-7 py-4 mx-auto" novalidate>
+      <fieldset>
+        <legend class="text-center display-4 mb-5">Rédiger un article</legend>
+        <div class="form-row align-items-center mb-3">
+          <div class="col-6">
+            <label for="category">Catégorie de l'article</label>
+            <select id="category" name="category" class="custom-select <?php if (!empty($error['category'])): ?> is-invalid <?php endif; ?>">
+              <option>Choisir une catégorie</option>
+              <?php foreach($categories as $category ) : ?>
+                  <option value="<?= intval( $category['Id'] ) ?>" <?php if($categoryPost ==  $category['Id'])  echo 'selected'; ?>>
+                    <?= htmlspecialchars( $category['Name'] ) ?>
+                  </option>
+              <?php endforeach; ?>
+            </select>
+            <?php if (!empty($error['category'])): ?>
+                <div class="text-danger"><?= $error['category'] ?></div>
+            <?php endif; ?>
+          </div>
+          <div class="col-6">
+            <label for="author">Auteur</label>
+              <select id="author" name="author" class="custom-select <?php if (!empty($error['author'])): ?> is-invalid <?php endif; ?>">
+              <option>Choisir un auteur</option>
+              <?php foreach($authors as $author ) : ?>
+                  <option value="<?= intval( $author['Id'] ) ?>" <?php if($authorPost ==  $author['Id'])  echo 'selected'; ?>>
+                    <?= htmlspecialchars( $author['FirstName'] ).' '. htmlspecialchars( $author['LastName'] ) ?>
+                  </option>
+              <?php endforeach; ?>
+            </select>
+            <?php if (!empty($error['author'])): ?>
+                <div class="text-danger"><?= $error['author'] ?></div>
+            <?php endif; ?>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="title">Titre de l'article</label>
+          <input id="title" name="title" type="text" value="<?= $titlePost ?>"
+            class="form-control  <?php if (!empty($error['title'])): ?> is-invalid <?php endif; ?>"
+            required placeholder="Saisir un titre évocateur">
+          <?php if (!empty($error['title'])): ?>
+            <div class="text-danger"><?= $error['title'] ?></div>
+          <?php endif; ?>
+        </div>
+        <div
+          class="form-group">
+          <label for="content">Texte de l'article</label>
+          <textarea id="content" name="content" 
+            class="form-control <?php if (!empty($error['content'])): ?> is-invalid <?php endif; ?>"
+            placeholder="Texte du contenu de l'article" spellcheck="true" rows="8"><?= $contentPost ?></textarea>
+          <?php if (!empty($error['content'])): ?>
+            <div class="text-danger"><?= $error['content'] ?></div>
+          <?php endif; ?>
+        </div>
+        <button type="submit" class="btn bg text-white">Enregistrer</button>
+      </fieldset>
+    </form>
+  </div>
+</main>

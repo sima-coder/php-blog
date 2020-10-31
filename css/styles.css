@@ -1,0 +1,49 @@
+body {
+  min-height : 100vh;
+  display : flex;
+  flex-direction : column;
+  justify-content : space-between;
+}
+
+main {
+  margin-top : 0;
+  margin-bottom : auto;
+  flex-grow : 2;
+}
+
+.post-header, .main-header {
+  background : url('../img/fond.webp') no-repeat right;
+  background-size : cover;
+  /* background-color: rgba(0,0,0,0.8); */
+}
+
+.bg{
+  background-color: #FA3352;
+}
+
+.bg-comment{
+  background-color:#797D83;
+}
+
+.text-color{
+  color: #FA3352;
+}
+
+a:hover{
+  text-decoration: none;
+  color:#797D83;
+}
+
+.nav-link.active{
+  background-color: #FA3352!important;
+}
+
+.nav-link{
+  color: #FA3352;
+}
+
+@media screen and (min-width : 960px) {
+  .card {
+    width : calc(100% /4 - 1rem );
+  }
+}

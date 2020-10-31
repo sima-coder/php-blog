@@ -1,0 +1,27 @@
+<main class="d-flex flex-column">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item">Administration</li>
+      <li class="breadcrumb-item"><a class="text-color" href="admin_categories_index.php">Gestion des catégories</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Créer une nouvelle catégorie</li>
+    </ol>
+  </nav>
+  <div class="flex-grow-1 d-md-flex align-items-stretch">
+    <?php include 'admin_menu.phtml'; ?>
+    <form method="POST" class="col-md-7 py-4 mx-auto" novalidate>
+      <fieldset>
+        <legend class="text-center display-4 mb-5">Créer une catégorie</legend>
+        <div class="form-group">
+          <label for="title">Nom de la catégorie</label>
+          <input id="name" name="name" type="text" value="<?= $name ?>"
+            class="form-control  <?php if (!empty($error['name'])): ?> is-invalid <?php endif; ?>"
+            required placeholder="Saisir le nom de la catégorie">
+          <?php if (!empty($error['name'])): ?>
+            <div class="text-danger"><?= $error['name'] ?></div>
+          <?php endif; ?>
+        </div>
+        <button type="submit" class="btn bg text-white">Enregistrer</button>
+      </fieldset>
+    </form>
+  </div>
+</main>

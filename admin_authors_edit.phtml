@@ -1,0 +1,37 @@
+<main class="d-flex flex-column">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item">Administration</li>
+      <li class="breadcrumb-item"><a href="admin_authors_index.php" class="text-color">Gestion des auteurs</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Modifier cet auteur</li>
+    </ol>
+  </nav>
+  <div class="flex-grow-1 d-md-flex align-items-stretch">
+    <?php include 'admin_menu.phtml'; ?>
+    <form method="post" action="admin_authors_edit.php" class="col-md-7 py-4 mx-auto">
+      <input type="hidden" name="id" value ="<?= intval($author['Id']) ?>">
+      <fieldset>
+        <legend class="text-center display-4 mb-5">Mise à jour d'un auteur</legend>
+        <div class="form-row align-items-center mb-2">
+          <div class="col-6">
+            <label for="firstname">Prénom de l'auteur</label>
+            <input type="text" 
+                   id="firstname" 
+                   name="firstname" 
+                   class="form-control"
+                   value="<?= htmlspecialchars($author['FirstName'])?>">
+          </div>
+          <div class="col-6">
+            <label for="lastname">Nom de l'auteur</label>
+            <input type="text" 
+                   id="lastname" 
+                   name="lastname" 
+                   class="form-control"
+                   value="<?= htmlspecialchars($author['LastName'])?>">
+          </div>
+        </div>
+        <button type="submit" class="btn bg text-white">Enregistrer</button>
+      </fieldset>
+    </form>
+  </div>
+</main>
